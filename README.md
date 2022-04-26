@@ -2,7 +2,6 @@
 # Local Tuya Key Extractor
 
 ## Tool for pulling Local Keys from Tuya IoT Cloud for use with Local Tuya
-As Seen in the [Hive Mind Automation YouTube Video](https://)
 
 ## Pre-Requisites
 
