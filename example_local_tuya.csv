@@ -1,0 +1,16 @@
+device_id,device_name,local_key,mac_address,product_name,product_category
+abcdefghijkl123456789,Crest smart plug,aabbcc112233dd44,aa:bb:cc:11:22:33,AU Plug 122,Socket
+abcdefghijkl123456789,Brilliant Globe,aabbcc112233dd44,aa:bb:cc:11:22:33,Brilliant RGB+3000K,Light Source
+abcdefghijkl123456789,Pixel strip,aabbcc112233dd44,aa:bb:cc:11:22:33,Genio LED Pixel strip,Strip Lights
+abcdefghijkl123456789,Cat Cam 2,aabbcc112233dd44,Unknown,Security Camera,Smart Camera
+abcdefghijkl123456789,Roaming fan,aabbcc112233dd44,aa:bb:cc:11:22:33,AFDC4501HA,Fan
+abcdefghijkl123456789,Lounge room fan,aabbcc112233dd44,aa:bb:cc:11:22:33,AFDC4501HA,Fan
+abcdefghijkl123456789,300 LED a string,aabbcc112233dd44,aa:bb:cc:11:22:33,Multi-function light,Light Source
+abcdefghijkl123456789,Ball lights,aabbcc112233dd44,aa:bb:cc:11:22:33,Multi-function light,Light Source
+abcdefghijkl123456789,Arlec Powerboard with USB,aabbcc112233dd44,aa:bb:cc:11:22:33,Powerboard PB88UHA,Socket
+abcdefghijkl123456789,Brilliant Power Strip,aabbcc112233dd44,aa:bb:cc:11:22:33,Smart Power Strip,Socket
+abcdefghijkl123456789,Arlec with Energy Meter PC399HA,aabbcc112233dd44,aa:bb:cc:11:22:33,Smart Plug with Energy Meter PC399HA,Socket
+abcdefghijkl123456789,Brilliant,aabbcc112233dd44,aa:bb:cc:11:22:33,M6-E,Socket
+abcdefghijkl123456789,GENIO Test,aabbcc112233dd44,aa:bb:cc:11:22:33,GENIO A60 RGB+CCT BK,Light Source
+abcdefghijkl123456789,Powerboard PB89HA,aabbcc112233dd44,aa:bb:cc:11:22:33,Powerboard PB89HA,Socket
+abcdefghijkl123456789,Arlec Grid Connect Switch,aabbcc112233dd44,aa:bb:cc:11:22:33,Single Adaptor PC190HA,Socket
