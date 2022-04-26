@@ -11,7 +11,7 @@
   - You will need the API Keys for that project in order for this tool to work
 
 ## Known Limitations
-You need to manually add your devices to the input.csv file.
+You need to manually add your devices to the input.csv file.  
 Attempts to automatically extract the device list have failed so far.
 
 ## Getting Started
