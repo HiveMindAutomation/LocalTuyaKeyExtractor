@@ -7,6 +7,8 @@ from tuya_connector import TuyaOpenAPI
 # Add your ACCESS_ID and ACCESS_KEY to auth_template.py and save it as auth.py
 from auth import ACCESS_ID, ACCESS_KEY
 
+## You MIGHT need to change this endpoint if your API Endpoint is on a Different Server, i.e. China
+
 API_ENDPOINT = "https://openapi.tuyaeu.com"
 
 # Instantiate the Tuya API Session
