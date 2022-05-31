@@ -37,6 +37,9 @@ open `auth_template.py` in the editor of your choice
 - Change "ACCESS_ID" to the Access ID/Client ID copied from your Tuya IoT Cloud project
 - Change "ACCESS_KEY" to the Access Secret/Client Secret copied from your Tuya IoT Cloud project
 
+Save the modified file as `auth.py`
+
+
 ### Add your Devices to input.csv
 open `input.csv` in Excel/Numbers/Editor of your choice.
 - Copy the Device ID's of the Devices you want to lookup into the CSV
