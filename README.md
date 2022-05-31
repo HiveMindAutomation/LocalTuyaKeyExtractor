@@ -19,7 +19,7 @@ Attempts to automatically extract the device list have failed so far.
 ### TIP: Easier with [PyCharm - Community Edition](https://www.jetbrains.com/pycharm/)
 
 Clone this project: `git clone https://github.com/HiveMindAutomation/LocalTuyaKeyExtractor.git`  
-Change to the project directory: `cd TuyaKeyExtractor`
+Change to the project directory: `cd LocalTuyaKeyExtractor`
 
 ### Optional - Create a Python Virtual Environment (recommended)
 - Create the Virtual Environment
