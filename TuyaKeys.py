@@ -31,7 +31,10 @@ def get_local_keys(device_id):
     mac_data = openapi.get(f"/v1.0/iot-03/devices/factory-infos", params=params)
     try:
         # Get RAW mac Address Data from Tuya API
-        mac_address = mac_data['result'][0]['mac']
+        try:
+            mac_address = mac_data['result'][0]['mac']
+        except IndexError:
+            mac_address = 'NOT FOUND'
         # Format MAC Address with ':' between octets.
         mac_address_formatted = ':'.join(mac_address[i:i + 2] for i in range(0, len(mac_address), 2))
     except KeyError:
