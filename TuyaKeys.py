@@ -46,13 +46,13 @@ def get_local_keys(device_id):
 
     pin_data = ''
     try:
-        pin_data = openapi.get(f'/v1.1/devices/{device_id}/specifications')['result']['functions']
+        pin_data = openapi.get(f'/v1.1/devices/{device_id}/specifications')['result']
     except KeyError:
         print(f"No Pin data for this device: {device_id}")
 
 
-    # with open(f'pinouts {device_id}.json', 'w') as outfile:
-    #     json.dump(pin_data, outfile, indent=4)
+    with open(f'pinouts {device_id}.json', 'w') as outfile:
+        json.dump(pin_data, outfile, indent=4)
 
     output_data = {
         'device_id': device_id,
@@ -63,14 +63,23 @@ def get_local_keys(device_id):
         'product_category': data['result']['category_name']
 
     }
+    try:
+        for index, pin in enumerate(pin_data['functions']):
+            output_data[f'Function {index} code'] = pin['code']
+            output_data[f'Function {index} pin'] = pin['dp_id']
+            output_data[f'Function {index} type'] = pin['type']
+            output_data[f'Function {index} values'] = pin['values']
+    except TypeError:
+        print(f" {device_id} Error")
 
-    for index, pin in enumerate(pin_data):
-        output_data[f'{index} code'] = pin['code']
-        output_data[f'{index} pin'] = pin['dp_id']
-        output_data[f'{index} type'] = pin['type']
-        output_data[f'{index} values'] = pin['values']
-
-
+    try:
+        for index, pin in enumerate(pin_data['status']):
+            output_data[f'Status {index} code'] = pin['code']
+            output_data[f'Status {index} pin'] = pin['dp_id']
+            output_data[f'Status {index} type'] = pin['type']
+            output_data[f'Status {index} values'] = pin['values']
+    except TypeError:
+        print(f" {device_id} Error")
 
 
 
