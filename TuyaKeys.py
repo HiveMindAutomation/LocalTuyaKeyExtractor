@@ -1,6 +1,9 @@
+#!./venv/bin/python3
+
 # Python Script to extract Local API Keys from Tuya Cloud API
 # Streamlines Local Tuya Setup
 
+import json
 import pandas as pd
 from tuya_connector import TuyaOpenAPI
 
@@ -41,6 +44,15 @@ def get_local_keys(device_id):
         # In testing, not all accessories returned the Mac Address on the JSON Response. This handles the error thrown.
         mac_address_formatted = "Unknown"
 
+    pin_data = ''
+    try:
+        pin_data = openapi.get(f'/v1.1/devices/{device_id}/specifications')['result']['functions']
+    except KeyError:
+        print(f"No Pin data for this device: {device_id}")
+
+
+    # with open(f'pinouts {device_id}.json', 'w') as outfile:
+    #     json.dump(pin_data, outfile, indent=4)
 
     output_data = {
         'device_id': device_id,
@@ -49,7 +61,18 @@ def get_local_keys(device_id):
         'mac_address': mac_address_formatted,
         'product_name': data['result']['product_name'],
         'product_category': data['result']['category_name']
+
     }
+
+    for index, pin in enumerate(pin_data):
+        output_data[f'{index} code'] = pin['code']
+        output_data[f'{index} pin'] = pin['dp_id']
+        output_data[f'{index} type'] = pin['type']
+        output_data[f'{index} values'] = pin['values']
+
+
+
+
 
     return output_data
 
