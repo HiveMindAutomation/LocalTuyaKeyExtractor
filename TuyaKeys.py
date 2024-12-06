@@ -23,22 +23,10 @@ devices = input_df.device_id.to_list()
 
 def get_local_keys(device_id):
     params = {'device_ids': device_id}
-    data = openapi.get(f"/v1.1/iot-03/devices/{device_id}")
+    data = openapi.get(f"/v2.0/cloud/thing/{device_id}")
     if data['success'] == False:
-        print(f'Something went wrong with {device_id}')
+        print(f'Something went wrong with cloud/thing/{device_id}')
         return None
-    mac_data = openapi.get(f"/v1.0/iot-03/devices/factory-infos", params=params)
-    try:
-        # Get RAW mac Address Data from Tuya API
-        try:
-            mac_address = mac_data['result'][0]['mac']
-        except IndexError:
-            mac_address = 'NOT FOUND'
-        # Format MAC Address with ':' between octets.
-        mac_address_formatted = ':'.join(mac_address[i:i + 2] for i in range(0, len(mac_address), 2))
-    except KeyError:
-        # In testing, not all accessories returned the Mac Address on the JSON Response. This handles the error thrown.
-        mac_address_formatted = "Unknown"
 
     pin_data = ''
     try:
@@ -47,17 +35,29 @@ def get_local_keys(device_id):
         print(f"No Pin data for this device: {device_id}")
 
 
-    with open(f'pinouts {device_id}.json', 'w') as outfile:
+    with open(f'pinouts-{device_id}.json', 'w') as outfile:
         json.dump(pin_data, outfile, indent=4)
 
+    result = data['result']
     output_data = {
         'device_id': device_id,
-        'device_name': data['result']['name'],
-        'local_key': data['result']['local_key'],
-        'mac_address': mac_address_formatted,
-        'product_name': data['result']['product_name'],
-        'product_category': data['result']['category_name']
-
+        'bind_space_id': result['bind_space_id'],
+        'category': result['category'],
+        'custom_name': result['custom_name'],
+        'icon': result['icon'],
+        'id': result['id'],
+        'ip': result['ip'],
+        'is_online': result['is_online'],
+        'lat': result['lat'],
+        'local_key': result['local_key'],
+        'lon': result['lon'],
+        'model': result['model'],
+        'name': result['name'],
+        'product_id': result['product_id'],
+        'product_name': result['product_name'],
+        'sub': result['sub'],
+        'time_zone': result['time_zone'],
+        'uuid': result['uuid']
     }
     try:
         for index, pin in enumerate(pin_data['functions']):
@@ -65,8 +65,10 @@ def get_local_keys(device_id):
             output_data[f'Function {index} pin'] = pin['dp_id']
             output_data[f'Function {index} type'] = pin['type']
             output_data[f'Function {index} values'] = pin['values']
-    except TypeError:
-        print(f" {device_id} Error")
+    except TypeError as te:
+        print(f" {device_id} Function Error {te}")
+    except KeyError as kex:
+        print(f" {device_id} KeyError {kex}")
 
     try:
         for index, pin in enumerate(pin_data['status']):
@@ -74,10 +76,10 @@ def get_local_keys(device_id):
             output_data[f'Status {index} pin'] = pin['dp_id']
             output_data[f'Status {index} type'] = pin['type']
             output_data[f'Status {index} values'] = pin['values']
-    except TypeError:
-        print(f" {device_id} Error")
-
-
+    except TypeError as te:
+        print(f" {device_id} Status Error {te}")
+    except KeyError as kex:
+        print(f" {device_id} Status KeyError {kex}")
 
     return output_data
 
