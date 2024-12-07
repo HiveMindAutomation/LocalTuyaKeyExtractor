@@ -1,8 +1,9 @@
 # Add your Cloud Project Credentials here
+# https://platform.tuya.com/cloud/basic is the Tuya Developer Platform Portal
 # save this file as auth.py
 
 ACCESS_ID = "<Copy your Access ID/Client ID from Tuya Portal Here>"
-ACCESS_KEY = "<Copy your Access Secret/Client Secret from Tuya portal Here>"
+ACCESS_SECRET = "<Copy your Access Secret/Client Secret from Tuya portal Here>"
 
 # List available at https://developer.tuya.com/en/docs/iot/api-request?id=Ka4a8uuo1j4t4
 # China Data Center	https://openapi.tuyacn.com

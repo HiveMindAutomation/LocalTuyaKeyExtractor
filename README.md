@@ -33,9 +33,10 @@ Change to the project directory: `cd LocalTuyaKeyExtractor`
 Optional - deactivate the venv: `deactivate`
 
 ### Setup your Authentication details
-open `auth_template.py` in the editor of your choice 
-- Change "ACCESS_ID" to the Access ID/Client ID copied from your Tuya IoT Cloud project
-- Change "ACCESS_KEY" to the Access Secret/Client Secret copied from your Tuya IoT Cloud project
+open `auth_template.py` in the editor of your choice and open the [Tuya Developer Platform Project page](https://platform.tuya.com/cloud/basic) in a browserr
+- Change "ACCESS_ID" to the Access ID/Client ID copied from your Tuya IoT Cloud project 
+- Change "ACCESS_SECRET" to the Access Secret/Client Secret copied from your Tuya IoT Cloud project
+- Change "API_ENDPOINT" according to match Data Center listed for the Cloud project (if needed)
 
 Save the modified file as `auth.py`
 

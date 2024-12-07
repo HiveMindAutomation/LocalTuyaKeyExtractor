@@ -7,11 +7,11 @@ import json
 import pandas as pd
 from tuya_connector import TuyaOpenAPI
 
-# Add your ACCESS_ID and ACCESS_KEY to auth_template.py and save it as auth.py
-from auth import ACCESS_ID, ACCESS_KEY, API_ENDPOINT
+# Add your ACCESS_ID and ACCESS_SECRET to auth_template.py and save it as auth.py
+from auth import ACCESS_ID, ACCESS_SECRET, API_ENDPOINT
 
 # Instantiate the Tuya API Session
-openapi = TuyaOpenAPI(API_ENDPOINT, ACCESS_ID, ACCESS_KEY)
+openapi = TuyaOpenAPI(API_ENDPOINT, ACCESS_ID, ACCESS_SECRET)
 openapi.connect()
 
 #Load input.CSV into a Dataframe
