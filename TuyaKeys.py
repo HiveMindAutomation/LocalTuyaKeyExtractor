@@ -28,12 +28,23 @@ def get_local_keys(device_id):
         print(f'Something went wrong with cloud/thing/{device_id}')
         return None
 
+    factory_device = { 'mac': 'NOT FOUND', 'sn': 'NOT FOUND' }
+    # Get RAW mac Address Data from Tuya API
+    try:
+        factory_data = openapi.get(f"/v1.0/devices/factory-infos", params=params)
+        factory_device = factory_data['result'][0]
+    except TypeError as tex:
+        print(f' {device_id} Something went wrong with /v1.0/devices/factory-infos {tex}')
+    except KeyError as kex:
+        print(f' {device_id} Something went wrong with /v1.0/devices/factory-infos {kex}')
+    except IndexError as iex:
+        print(f' {device_id} Something went wrong with /v1.0/devices/factory-infos {iex}')
+
     pin_data = ''
     try:
         pin_data = openapi.get(f'/v1.1/devices/{device_id}/specifications')['result']
     except KeyError:
         print(f"No Pin data for this device: {device_id}")
-
 
     with open(f'pinouts-{device_id}.json', 'w') as outfile:
         json.dump(pin_data, outfile, indent=4)
@@ -51,10 +62,12 @@ def get_local_keys(device_id):
         'lat': result['lat'],
         'local_key': result['local_key'],
         'lon': result['lon'],
+        'mac': factory_device['mac'],
         'model': result['model'],
         'name': result['name'],
         'product_id': result['product_id'],
         'product_name': result['product_name'],
+        'ns': factory_device['sn'],
         'sub': result['sub'],
         'time_zone': result['time_zone'],
         'uuid': result['uuid']
@@ -82,7 +95,6 @@ def get_local_keys(device_id):
         print(f" {device_id} Status KeyError {kex}")
 
     return output_data
-
 
 device_list = []
 
