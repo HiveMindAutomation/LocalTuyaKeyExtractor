@@ -52,26 +52,27 @@ def get_local_keys(device_id):
     result = data['result']
     output_data = {
         'device_id': device_id,
-        'bind_space_id': result['bind_space_id'],
-        'category': result['category'],
-        'custom_name': result['custom_name'],
-        'icon': result['icon'],
-        'id': result['id'],
-        'ip': result['ip'],
-        'is_online': result['is_online'],
-        'lat': result['lat'],
-        'local_key': result['local_key'],
-        'lon': result['lon'],
-        'mac': factory_device['mac'],
-        'model': result['model'],
-        'name': result['name'],
-        'product_id': result['product_id'],
-        'product_name': result['product_name'],
-        'sn': factory_device['ns'],
-        'sub': result['sub'],
-        'time_zone': result['time_zone'],
-        'uuid': result['uuid']
+        'bind_space_id': result.get('bind_space_id', ''),
+        'category': result.get('category'),
+        'custom_name': result.get('custom_name', ''),
+        'icon': result.get('icon', ''),
+        'id': result.get('id', ''),
+        'ip': result.get('ip', ''),
+        'is_online': result.get('is_online', ''),
+        'lat': result.get('lat', ''),
+        'local_key': result.get('local_key', ''),
+        'lon': result.get('lon', ''),
+        'mac': factory_device.get('mac',''),
+        'model': result.get('model', ''),
+        'name': result.get('name', ''),
+        'product_id': result.get('product_id', ''),
+        'product_name': result.get('product_name', ''),
+        'sn': factory_device.get('sn', ''),
+        'sub': result.get('sub', ''),
+        'time_zone': result.get('time_zone', ''),
+        'uuid': result.get('uuid', '')
     }
+
     try:
         for index, pin in enumerate(pin_data['functions']):
             output_data[f'Function {index} code'] = pin['code']
