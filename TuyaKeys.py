@@ -67,7 +67,7 @@ def get_local_keys(device_id):
         'name': result['name'],
         'product_id': result['product_id'],
         'product_name': result['product_name'],
-        'ns': factory_device['sn'],
+        'sn': factory_device['ns'],
         'sub': result['sub'],
         'time_zone': result['time_zone'],
         'uuid': result['uuid']
